@@ -1,11 +1,7 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Telegram, GitHub, Phone, Copyright } from "@mui/icons-material";
-
-type IconButtonProps = {
-  href: string;
-  ariaLabel: string;
-  children: React.ReactNode;
-};
+import { CustomIconButton } from "./components/CustomIconButton";
+import { t } from "../../../shared/lib/locales";
 
 const SOCIAL_LINKS = [
   {
@@ -24,20 +20,6 @@ const SOCIAL_LINKS = [
     icon: <Phone fontSize="medium" sx={{ color: "white" }} />,
   },
 ];
-
-function CustomIconButton({ href, ariaLabel, children }: IconButtonProps) {
-  return (
-    <IconButton
-      component="a"
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={ariaLabel}
-    >
-      {children}
-    </IconButton>
-  );
-}
 
 export function Footer() {
   const CURRENT_YEAR = new Date().getFullYear();
@@ -78,7 +60,7 @@ export function Footer() {
           <Copyright fontSize="inherit" sx={{ mr: 0.5 }} />
           <small>
             <time dateTime={String(CURRENT_YEAR)}>
-              {`${CURRENT_YEAR} | Роман Капитанов`}
+              {`${CURRENT_YEAR} | ${t("footer.author")}`}
             </time>
           </small>
         </Typography>

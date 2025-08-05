@@ -1,0 +1,9 @@
+.underlined {
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(to right, #f77070, #f77070);
+  background-repeat: no-repeat;
+  background-position: 0 82%;
+  background-size: 100% 1px;
+  text-shadow: 0.05em 0 white, -0.05em 0 white;
+}

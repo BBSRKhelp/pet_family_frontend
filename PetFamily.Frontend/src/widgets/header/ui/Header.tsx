@@ -6,24 +6,8 @@ import {
   AccountCircleOutlined,
   LogoutOutlined,
 } from "@mui/icons-material";
-
-type NavLinkProps = {
-  to: string;
-  ariaLabel: string;
-  children: React.ReactNode;
-};
-
-function CustomNavLink({ to, ariaLabel, children }: NavLinkProps) {
-  return (
-    <NavLink
-      to={to}
-      className="w-16 h-12 flex justify-center items-center"
-      aria-label={ariaLabel}
-    >
-      {children}
-    </NavLink>
-  );
-}
+import { CustomNavLink } from "./components/CustomNavLink";
+import { t } from "../../../shared/lib/locales";
 
 const NAV_LINKS = [
   {
@@ -74,7 +58,7 @@ export function Header() {
             pointerEvents: "none",
           }}
         >
-          Pet Family
+          {t("header.name")}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", zIndex: 1 }}>
           {NAV_LINKS.map((link) => (
