@@ -2,6 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
 import { getUsersAsync } from "../../../shared/api/requests";
+import { t } from "../../../shared/lib/locales";
 
 export function LoginForm() {
   const [users, setUsers] = useState<string[]>([]);
@@ -25,7 +26,7 @@ export function LoginForm() {
   return (
     <div className="flex flex-col h-full w-full py-6 px-10 justify-center items-start gap-4">
       <NavLink to="/" className="text-xl text-main-color font-mono">
-        ← Обратно на Главную
+        {t("main.login.return")}
       </NavLink>
 
       <div className="flex flex-col flex-1 min-w-80 mx-auto items-center justify-center gap-9">

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
-import { Header } from "../../widgets/header/Header";
+import { Header } from "../../widgets/header/ui/Header";
 import { ContentBlock } from "../../shared/ui/ContentBlock";
-import { Footer } from "../../widgets/footer/Footer";
+import { Footer } from "../../widgets/footer/ui/Footer";
 
 export function RootLayout() {
   return (

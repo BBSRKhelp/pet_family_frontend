@@ -1,0 +1,42 @@
+{
+  "header": {
+    "name": "Pet Family"
+  },
+  "main": {
+    "navPanel": {
+      "home": "Главная",
+      "volunteers": "Волонтеры",
+      "helpAnimals": "Помочь животным"
+    },
+    "filters": {
+      "title": "Фильтры и сортировка",
+      "species": "Вид",
+      "breed": "Порода",
+      "name": "Имя",
+      "age": "Возраст",
+      "coloration": "Окрас",
+      "status": "Статус",
+      "address": "Место нахождения",
+      "sterilization": "Кастрация/стерилизация",
+      "vaccinations": "Прививки",
+      "dateAdded": "Дата добавления",
+      "apply": "Применить"
+    },
+    "animalCard": {
+      "isSterilization": "Кастрирован/Стелеризована:",
+      "isVaccination": "Вакцинирован:",
+      "status": "Статус:",
+      "moreDetailed": "Подробнее",
+      "petMovedAway": "Питомец отошел"
+    },
+    "login": {
+      "return": "← Обратно на Главную"
+    }
+  },
+  "footer": {
+    "author": "Роман Капитанов"
+  },
+  "errors": {
+    "required": "Обязательное поле"
+  }
+}
