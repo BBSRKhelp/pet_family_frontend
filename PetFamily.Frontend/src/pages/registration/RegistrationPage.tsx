@@ -1,3 +1,5 @@
-export function Registration() {
-  return <div className="registration_page">регистрация</div>;
+import { RegistrationForm } from "../../features/auth/registration/RegistrationForm";
+
+export function RegistrationPage() {
+  return <RegistrationForm />;
 }

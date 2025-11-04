@@ -8,7 +8,7 @@ type AutocompleteProps = {
 export function CustomAutocomplete(props: AutocompleteProps) {
   return (
     <Box display="flex" flexDirection="column" mb={1}>
-      <div className="label text-gray-500 mb-1">{props.label}</div>
+      <Box className="label text-gray-500 mb-1">{props.label}</Box>
       <Autocomplete
         size="small"
         options={props.options}

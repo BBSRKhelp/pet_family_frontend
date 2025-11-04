@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import { RootLayout } from "../layout/RootLayout";
 import { HomePage } from "../../pages/home/ui/HomePage";
 import { LoginPage } from "../../pages/login/LoginPage";
-import { Registration } from "../../pages/registration/RegistrationPage";
+import { RegistrationPage } from "../../pages/registration/RegistrationPage";
 import { Volunteers } from "../../pages/volunteer/VolunteersPage";
 import { Profile } from "../../pages/profile/ProfilePage";
 
@@ -20,8 +20,8 @@ export const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/registration",
-        element: <Registration />,
+        path: "/register",
+        element: <RegistrationPage />,
       },
       {
         path: "/volunteers",

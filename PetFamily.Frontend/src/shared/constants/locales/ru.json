@@ -30,7 +30,23 @@
       "petMovedAway": "Питомец отошел"
     },
     "login": {
-      "return": "← Обратно на Главную"
+      "return": "← Обратно на Главную",
+      "entry": "Вход",
+      "email": "Email",
+      "password": "Пароль",
+      "enter": "Войти",
+      "isRegister": "Еще не зарегистрированы?",
+      "registration": "Регистрация"
+    },
+    "registration": {
+      "return": "← Обратно на Главную",
+      "registration": "Регистрация",
+      "email": "Email",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль",
+      "register": "Зарегистрироваться",
+      "isLogin": "Уже зарегистрированы?",
+      "login": "Вход"
     }
   },
   "footer": {

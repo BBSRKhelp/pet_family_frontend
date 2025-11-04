@@ -13,29 +13,38 @@ import { t } from "../../../shared/lib/locales";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { AccountsService } from "../../../shared/api/accounts";
 
-export function LoginForm() {
+export function RegistrationForm() {
+  //TODO переделать
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  type LoginFields = {
+  type RegistrationFields = {
     email: string;
     password: string;
+    repeatPassword: string;
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFields>();
+    watch,
+  } = useForm<RegistrationFields>();
+
+  const password = watch("password");
 
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async (data: LoginFields) => {
+  const onSubmit = async (data: RegistrationFields) => {
+    if (data.password !== data.repeatPassword) {
+      return;
+    }
+
     try {
       setIsLoading(true);
-      const response = await AccountsService.loginAsync(
+      const response = await AccountsService.registerAsync(
         data.email,
         data.password
       );
@@ -59,7 +68,7 @@ export function LoginForm() {
         to="/"
         className="text-xl text-main-color font-mono absolute top-6"
       >
-        {t("main.login.return")}
+        {t("main.registration.return")}
       </NavLink>
 
       <Box
@@ -68,7 +77,7 @@ export function LoginForm() {
         className="flex flex-col mx-auto items-center gap-9 shadow-2xl rounded-2xl py-10 px-15"
       >
         <Typography variant="h5" fontWeight={600}>
-          {t("main.login.entry")}
+          {t("main.registration.registration")}
         </Typography>
 
         <Box
@@ -81,7 +90,7 @@ export function LoginForm() {
         >
           <Box display="flex" flexDirection="column">
             <Box className="label text-gray-500 mb-1">
-              {t("main.login.email")}
+              {t("main.registration.email")}
             </Box>
             <TextField
               fullWidth
@@ -93,7 +102,7 @@ export function LoginForm() {
                 required: "Почта обязательна",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Лох",
+                  message: "Почта некорректна",
                 },
               })}
               sx={{
@@ -111,7 +120,7 @@ export function LoginForm() {
 
           <Box display="flex" flexDirection="column">
             <Box className="label text-gray-500 mb-1">
-              {t("main.login.password")}
+              {t("main.registration.password")}
             </Box>
             <TextField
               fullWidth
@@ -152,12 +161,55 @@ export function LoginForm() {
             />
           </Box>
 
+          <Box display="flex" flexDirection="column">
+            <Box className="label text-gray-500 mb-1">
+              {t("main.registration.repeatPassword")}
+            </Box>
+            <TextField
+              fullWidth
+              size="small"
+              type={isPasswordVisible ? "text" : "password"}
+              error={!!errors.repeatPassword}
+              helperText={errors.repeatPassword?.message || " "}
+              {...register("repeatPassword", {
+                required: "Повторите пароль",
+                validate: {
+                  matches: (value) =>
+                    value === password || "Пароли не совпадают",
+                },
+              })}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={togglePasswordVisibility}
+                      edge="end"
+                    >
+                      {isPasswordVisible ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                "& .MuiFormHelperText-root": { margin: 0, lineHeight: "1.2" },
+                "& .MuiOutlinedInput-root": {
+                  color: "grey",
+                  height: "2rem",
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#f77070",
+                  },
+                },
+              }}
+            />
+          </Box>
+
           <Button
             type="submit"
             variant="contained"
             sx={{ mt: 2, width: "80%", mx: "auto", backgroundColor: "#f77070" }}
           >
-            {t("main.login.enter")}
+            {t("main.registration.register")}
           </Button>
         </Box>
 
@@ -169,10 +221,10 @@ export function LoginForm() {
           }}
         >
           <Typography sx={{ color: "#808080" }}>
-            {t("main.login.isRegister")}
+            {t("main.registration.isLogin")}
           </Typography>
-          <NavLink to="/register" style={{ color: "#f77070" }}>
-            {t("main.login.registration")}
+          <NavLink to="/login" style={{ color: "#f77070" }}>
+            {t("main.registration.login")}
           </NavLink>
         </Box>
       </Box>
